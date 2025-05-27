@@ -1,16 +1,21 @@
 {
-    "name": "",
-    "short_name": "",
-    "description": "",
-    "start_url": "",
-    "display": "",
-    "background_color": "",
-    "theme_color": "",
+    "name": "My Awesome Recipe App",
+    "short_name": "RecipeApp",
+    "description": "The best app to find and save recipes!",
+    "start_url": "/",
+    "display": "standalone",
+    "background_color": "#ffffff",
+    "theme_color": "#3367D6",
     "icons": [
       {
         "src": "/assets/images/icons/icon-192x192.png",
         "sizes": "192x192",
         "type": "image/png"
+      },
+      {
+      "src": "/assets/images/icons/icon-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png"
       }
     ]
   }
