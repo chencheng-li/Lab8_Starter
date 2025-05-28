@@ -15,17 +15,22 @@ window.addEventListener('DOMContentLoaded', init);
 
 // Starts the program, all function calls trace back here
 async function init() {
+  console.log("--- init() function STARTED ---");
   // initialize ServiceWorker
   initializeServiceWorker();
   // Get the recipes from localStorage
   let recipes;
   try {
+    console.log("--- init(): About to call getRecipes() ---");
     recipes = await getRecipes();
+    console.log("--- init(): getRecipes() returned ---");
   } catch (err) {
     console.error(err);
+    console.error("--- init(): Error calling getRecipes() ---", err);
   }
   // Add each recipe to the <main> element
   addRecipesToDocument(recipes);
+  console.log("--- init() function FINISHED ---");
 }
 
 /**
@@ -83,12 +88,14 @@ async function getRecipes() {
   //            If there are recipes, return them.
   const cachedRecipes = localStorage.getItem('recipes');
   if (cachedRecipes) {
+        console.log("--- getRecipes: found in localStorage, returning cached ---");
     return JSON.parse(cachedRecipes);
   }
   /**************************/
   // The rest of this method will be concerned with requesting the recipes
   // from the network
   // A2. TODO - Create an empty array to hold the recipes that you will fetch
+    console.log("--- getRecipes: not in localStorage, fetching from network ---");
   const recipes = [];
   // A3. TODO - Return a new Promise. If you are unfamiliar with promises, MDN
   //            has a great article on them. A promise takes one parameter - A
@@ -103,7 +110,7 @@ async function getRecipes() {
   // A4. TODO - Loop through each recipe in the RECIPE_URLS array constant
   //            declared above
     for (const url of RECIPE_URLS) {
-
+      console.log("--- getRecipes: fetching URL:", url); 
 
   // A5. TODO - Since we are going to be dealing with asynchronous code, create
   //            a try / catch block. A6-A9 will be in the try portion, A10-A11
